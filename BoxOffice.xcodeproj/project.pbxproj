@@ -12,6 +12,10 @@
 		35442AD921C3F0D100CBCE7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35442AD721C3F0D100CBCE7D /* Main.storyboard */; };
 		35442ADB21C3F0D200CBCE7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35442ADA21C3F0D200CBCE7D /* Assets.xcassets */; };
 		35442ADE21C3F0D200CBCE7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35442ADC21C3F0D200CBCE7D /* LaunchScreen.storyboard */; };
+		35442AE621C3F37C00CBCE7D /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35442AE521C3F37C00CBCE7D /* CollectionViewController.swift */; };
+		35442AE821C3F6A200CBCE7D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35442AE721C3F6A200CBCE7D /* TableViewCell.swift */; };
+		35442AEA21C3F6BA00CBCE7D /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35442AE921C3F6BA00CBCE7D /* CollectionViewCell.swift */; };
+		35442AEF21C404B300CBCE7D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35442AEE21C404B300CBCE7D /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		35442ADA21C3F0D200CBCE7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35442ADD21C3F0D200CBCE7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35442ADF21C3F0D200CBCE7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35442AE521C3F37C00CBCE7D /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		35442AE721C3F6A200CBCE7D /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		35442AE921C3F6BA00CBCE7D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		35442AEE21C404B300CBCE7D /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,42 @@
 		35442AD221C3F0D100CBCE7D /* BoxOffice */ = {
 			isa = PBXGroup;
 			children = (
+				35442AED21C4049900CBCE7D /* Controller */,
+				35442AEC21C4049500CBCE7D /* Model */,
+				35442AEB21C4049100CBCE7D /* View */,
 				35442AD321C3F0D100CBCE7D /* AppDelegate.swift */,
-				35442AD521C3F0D100CBCE7D /* ViewController.swift */,
 				35442AD721C3F0D100CBCE7D /* Main.storyboard */,
 				35442ADA21C3F0D200CBCE7D /* Assets.xcassets */,
 				35442ADC21C3F0D200CBCE7D /* LaunchScreen.storyboard */,
 				35442ADF21C3F0D200CBCE7D /* Info.plist */,
 			);
 			path = BoxOffice;
+			sourceTree = "<group>";
+		};
+		35442AEB21C4049100CBCE7D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				35442AE721C3F6A200CBCE7D /* TableViewCell.swift */,
+				35442AE921C3F6BA00CBCE7D /* CollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35442AEC21C4049500CBCE7D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				35442AEE21C404B300CBCE7D /* DataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		35442AED21C4049900CBCE7D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35442AE521C3F37C00CBCE7D /* CollectionViewController.swift */,
+				35442AD521C3F0D100CBCE7D /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +171,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35442AEA21C3F6BA00CBCE7D /* CollectionViewCell.swift in Sources */,
+				35442AE621C3F37C00CBCE7D /* CollectionViewController.swift in Sources */,
+				35442AE821C3F6A200CBCE7D /* TableViewCell.swift in Sources */,
 				35442AD621C3F0D100CBCE7D /* ViewController.swift in Sources */,
 				35442AD421C3F0D100CBCE7D /* AppDelegate.swift in Sources */,
+				35442AEF21C404B300CBCE7D /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
