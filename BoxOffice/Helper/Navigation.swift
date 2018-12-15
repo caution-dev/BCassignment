@@ -30,19 +30,22 @@ extension UIViewController {
         let ticketAction: UIAlertAction
         ticketAction = UIAlertAction(title: "예매율", style: .default, handler: {(
             action: UIAlertAction) in
-            //0 default
+            self.navigationItem.title = "예매율순"
+            //0 default http://connect-boxoffice.run.goorm.io/movies?order_type=0
         })
         
         let curationAction: UIAlertAction
         curationAction = UIAlertAction(title: "큐레이션", style: .default, handler: {(
             action: UIAlertAction) in
-            //1
+            self.navigationItem.title = "큐레이션"
+            //1 http://connect-boxoffice.run.goorm.io/movies?order_type=1
         })
         
         let openAction: UIAlertAction
         openAction = UIAlertAction(title: "개봉일", style: .default, handler: {(
             action: UIAlertAction) in
-            //2
+            self.navigationItem.title = "개봉일순"
+            //2 http://connect-boxoffice.run.goorm.io/movies?order_type=2
         })
         
         alertController.addAction(noAction)
@@ -51,6 +54,19 @@ extension UIViewController {
         alertController.addAction(openAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func checkGrade(grade: Int) -> String {
+        switch grade {
+        case 12:
+            return Grade.twelve.rawValue
+        case 15:
+            return Grade.fifteen.rawValue
+        case 19:
+            return Grade.nineteen.rawValue
+        default:
+            return Grade.all.rawValue
+        }
     }
     
 }

@@ -9,11 +9,13 @@
 import Foundation
 
 struct Comment: Codable {
+    
     let rating: Double
     let contents: String
     let movie_id: String
     let timestamp: Double
     let writer: String
+    
 }
 
 struct CommentResponse: Codable {

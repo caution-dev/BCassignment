@@ -26,6 +26,7 @@ class DetailViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        
         loadData()
         loadComment()
     }
@@ -58,7 +59,7 @@ class DetailViewController: UIViewController {
         let request = URLRequest(url: url)
         let dataTask = defaultSession.dataTask(with: request) { [weak self] data, response, error in
             guard let self = self else { return }
-            guard error == nil else { return } // 에러처리
+            guard error == nil else { return } // 에러 처리
             if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
                 do {
                     let response = try JSONDecoder().decode(DetailMovie.self, from: data)
@@ -99,15 +100,30 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellIdentifier)1", for: indexPath) as! DetailTableViewCell
             guard let imageURL = URL(string: detailInfo?.image ?? "") else { return cell }
             guard let imageData = try? Data(contentsOf: imageURL) else { return cell }
+            
             cell.selectImage.image = UIImage(data: imageData)
             cell.titleLabel.text = detailInfo?.title
             cell.mainDateLabel.text = detailInfo?.date
             cell.detailLabel.text = detailInfo?.synopsis
-            cell.userCountLabel.text = "\(detailInfo?.audience)"
+            cell.userRatingLabel.text = detailInfo?.user_rating.description
+            cell.userCountLabel.text = detailInfo?.audience.description
             cell.directorLabel.text = detailInfo?.director
             cell.actorLabel.text = detailInfo?.actor
             
+            if let grade = detailInfo?.grade {
+                cell.gradeImage.image = UIImage(named: checkGrade(grade: grade))
+            }
+            
+            if let genre = detailInfo?.genre, let duration = detailInfo?.duration {
+                cell.descLabel.text = "\(genre)\(duration)분"
+            }
+            
+            if let grade = detailInfo?.reservation_grade, let reservation = detailInfo?.reservation_rate {
+                cell.ratingLabel.text = "\(grade)위 \(reservation)%"
+            }
+            
             return cell
+            
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CommentTableViewCell
             cell.nickLabel.text = commentList[indexPath.row].writer
