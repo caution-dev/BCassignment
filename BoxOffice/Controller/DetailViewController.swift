@@ -15,10 +15,15 @@ class DetailViewController: UIViewController {
     var detailId = ""
     private let detailUrl = "http://connect-boxoffice.run.goorm.io/movie?id="
     private let commentUrl = "http://connect-boxoffice.run.goorm.io/comments?movie_id="
-    
+    private var cellIdentifier = "Cell"
+    private var commentList = [Comment]()
+    private var detailInfo: DetailMovie?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.register(UINib(nibName:"DetailTableViewCell",bundle: nil), forCellReuseIdentifier: "\(cellIdentifier)1")
+        tableView.register(UINib(nibName:"CommentTableViewCell",bundle: nil), forCellReuseIdentifier: cellIdentifier)
+
         tableView.delegate = self
         tableView.dataSource = self
         loadData()
@@ -35,7 +40,10 @@ class DetailViewController: UIViewController {
             if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
                 do {
                     let response = try JSONDecoder().decode(CommentResponse.self, from: data)
-                    print(response)
+                    self.commentList = response.comments
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 } catch(let error) {
                     print(error)
                 }
@@ -55,6 +63,10 @@ class DetailViewController: UIViewController {
                 do {
                     let response = try JSONDecoder().decode(DetailMovie.self, from: data)
                     self.navigationItem.title = response.title
+                    self.detailInfo = response
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                     print(response)
                 } catch (let error) {
                     print(error)
@@ -70,16 +82,40 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 {
+            return 1
+        } else {
+            return commentList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        return cell
+   
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellIdentifier)1", for: indexPath) as! DetailTableViewCell
+            guard let imageURL = URL(string: detailInfo?.image ?? "") else { return cell }
+            guard let imageData = try? Data(contentsOf: imageURL) else { return cell }
+            cell.selectImage.image = UIImage(data: imageData)
+            cell.titleLabel.text = detailInfo?.title
+            cell.mainDateLabel.text = detailInfo?.date
+            cell.detailLabel.text = detailInfo?.synopsis
+            cell.userCountLabel.text = "\(detailInfo?.audience)"
+            cell.directorLabel.text = detailInfo?.director
+            cell.actorLabel.text = detailInfo?.actor
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CommentTableViewCell
+            cell.nickLabel.text = commentList[indexPath.row].writer
+            cell.dateLabel.text = "\(commentList[indexPath.row].timestamp)"
+            cell.commentLabel.text = commentList[indexPath.row].contents
+            return cell
+        }
+
     }
     
 }
