@@ -8,3 +8,6 @@
 
 import Foundation
 
+protocol RequestAPI {
+    func requestList()
+}
