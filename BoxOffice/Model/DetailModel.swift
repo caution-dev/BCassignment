@@ -26,4 +26,3 @@ struct DetailMovie: Codable {
     let title: String
     
 }
-

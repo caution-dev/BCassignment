@@ -121,30 +121,37 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bj4-c9-9EN">
-                                                    <rect key="frame" x="8" y="8" width="120" height="153.5"/>
+                                                    <rect key="frame" x="8" y="8" width="120" height="140"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="140" id="jHU-G4-mQc"/>
                                                         <constraint firstAttribute="width" constant="120" id="mht-qp-jHF"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTB-Mq-Jdp">
-                                                    <rect key="frame" x="136" y="8" width="231" height="25.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <rect key="frame" x="136" y="8" width="48" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Js-WE-zmM">
-                                                    <rect key="frame" x="136" y="143.5" width="231" height="18"/>
+                                                    <rect key="frame" x="136" y="120.5" width="231" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jf-aI-QNT">
-                                                    <rect key="frame" x="136" y="78" width="231" height="18"/>
+                                                    <rect key="frame" x="136" y="55" width="231" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_12" translatesAutoresizingMaskIntoConstraints="NO" id="fCG-za-qeP">
+                                                    <rect key="frame" x="192" y="8" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="eMg-cx-67Y"/>
+                                                        <constraint firstAttribute="width" constant="30" id="voM-hf-nvm"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="4Js-WE-zmM" firstAttribute="leading" secondItem="Bj4-c9-9EN" secondAttribute="trailing" constant="8" id="0UI-DE-bkv"/>
@@ -152,10 +159,11 @@
                                                 <constraint firstItem="sTB-Mq-Jdp" firstAttribute="leading" secondItem="Bj4-c9-9EN" secondAttribute="trailing" constant="8" id="CcE-hW-JIO"/>
                                                 <constraint firstItem="4Js-WE-zmM" firstAttribute="top" secondItem="1Jf-aI-QNT" secondAttribute="bottom" constant="47.5" id="Htu-y9-DSP"/>
                                                 <constraint firstAttribute="trailing" secondItem="1Jf-aI-QNT" secondAttribute="trailing" constant="8" id="iNK-eA-dZB"/>
-                                                <constraint firstItem="1Jf-aI-QNT" firstAttribute="top" secondItem="sTB-Mq-Jdp" secondAttribute="bottom" constant="44.5" id="j7c-gA-IRk"/>
-                                                <constraint firstAttribute="trailing" secondItem="sTB-Mq-Jdp" secondAttribute="trailing" constant="8" id="oyb-Ua-slO"/>
+                                                <constraint firstItem="1Jf-aI-QNT" firstAttribute="top" secondItem="sTB-Mq-Jdp" secondAttribute="bottom" constant="23" id="j7c-gA-IRk"/>
+                                                <constraint firstItem="fCG-za-qeP" firstAttribute="leading" secondItem="sTB-Mq-Jdp" secondAttribute="trailing" constant="8" id="oJ2-SF-fJ9"/>
                                                 <constraint firstAttribute="bottom" secondItem="Bj4-c9-9EN" secondAttribute="bottom" constant="8" id="q5L-xx-oGu"/>
                                                 <constraint firstItem="1Jf-aI-QNT" firstAttribute="leading" secondItem="Bj4-c9-9EN" secondAttribute="trailing" constant="8" id="rLG-qo-5bN"/>
+                                                <constraint firstItem="fCG-za-qeP" firstAttribute="top" secondItem="uda-Rg-YdJ" secondAttribute="top" constant="8" id="uMP-RT-sEP"/>
                                                 <constraint firstItem="sTB-Mq-Jdp" firstAttribute="top" secondItem="uda-Rg-YdJ" secondAttribute="top" constant="8" id="x2b-bn-vD7"/>
                                                 <constraint firstAttribute="bottom" secondItem="4Js-WE-zmM" secondAttribute="bottom" constant="8" id="xff-dG-ddR"/>
                                                 <constraint firstItem="Bj4-c9-9EN" firstAttribute="leading" secondItem="uda-Rg-YdJ" secondAttribute="leading" constant="8" id="yLx-af-VOQ"/>
@@ -165,6 +173,7 @@
                                         <connections>
                                             <outlet property="dateLabel" destination="4Js-WE-zmM" id="nmV-8d-Xb5"/>
                                             <outlet property="descLabel" destination="1Jf-aI-QNT" id="GU3-QC-t0D"/>
+                                            <outlet property="gradeImage" destination="fCG-za-qeP" id="g8d-yd-rQa"/>
                                             <outlet property="thumbImage" destination="Bj4-c9-9EN" id="oZs-d5-til"/>
                                             <outlet property="titleLabel" destination="sTB-Mq-Jdp" id="gah-nE-mWt"/>
                                             <segue destination="URt-8d-eFg" kind="show" identifier="DetailTable" id="2LP-ao-edS"/>
@@ -249,11 +258,11 @@
             </objects>
             <point key="canvasLocation" x="-610" y="-627"/>
         </scene>
-        <!--Item 1-->
+        <!--Table-->
         <scene sceneID="dje-Vm-H7C">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O5D-g2-dSI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="a7O-hN-GPz"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="ic_table" id="a7O-hN-GPz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Xy-qN-jug">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -268,11 +277,11 @@
             </objects>
             <point key="canvasLocation" x="202.40000000000001" y="-960.2698650674663"/>
         </scene>
-        <!--Item 2-->
+        <!--Collection-->
         <scene sceneID="EBK-n0-gOi">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dce-pZ-2LD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="unh-U1-dE6"/>
+                    <tabBarItem key="tabBarItem" title="Collection" image="ic_collection" id="unh-U1-dE6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dIx-zT-7zb">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -288,6 +297,11 @@
             <point key="canvasLocation" x="202.40000000000001" y="-294.60269865067471"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_12" width="20" height="20"/>
+        <image name="ic_collection" width="25" height="25"/>
+        <image name="ic_table" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2LP-ao-edS"/>
     </inferredMetricsTieBreakers>
