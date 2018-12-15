@@ -111,10 +111,10 @@
             </objects>
             <point key="canvasLocation" x="888.79999999999995" y="-295.50224887556226"/>
         </scene>
-        <!--View Controller-->
+        <!--Table View Controller-->
         <scene sceneID="IyR-co-d2I">
             <objects>
-                <viewController id="6fm-vS-OD7" customClass="ViewController" customModule="BoxOffice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6fm-vS-OD7" customClass="TableViewController" customModule="BoxOffice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5TD-1c-JB9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

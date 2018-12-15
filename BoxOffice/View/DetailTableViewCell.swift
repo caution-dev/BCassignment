@@ -10,6 +10,12 @@ import UIKit
 
 class DetailTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var start1: UIImageView!
+    @IBOutlet weak var start2: UIImageView!
+    @IBOutlet weak var start3: UIImageView!
+    @IBOutlet weak var start4: UIImageView!
+    @IBOutlet weak var start5: UIImageView!
+    
     @IBOutlet weak var selectImage: UIImageView!
     @IBOutlet weak var gradeImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!

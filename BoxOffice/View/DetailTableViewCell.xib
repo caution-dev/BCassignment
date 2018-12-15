@@ -108,35 +108,35 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_label" translatesAutoresizingMaskIntoConstraints="NO" id="mWw-n3-euY">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_large" translatesAutoresizingMaskIntoConstraints="NO" id="mWw-n3-euY" userLabel="Start1">
                                         <rect key="frame" x="100" y="58" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="n1f-8w-ZuE"/>
                                             <constraint firstAttribute="width" constant="20" id="xnH-1z-UFX"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_label" translatesAutoresizingMaskIntoConstraints="NO" id="3c3-V6-rRH">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_large" translatesAutoresizingMaskIntoConstraints="NO" id="3c3-V6-rRH">
                                         <rect key="frame" x="121" y="58" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="8eo-Kc-VDN"/>
                                             <constraint firstAttribute="width" constant="20" id="Q5a-Bq-dKz"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_label" translatesAutoresizingMaskIntoConstraints="NO" id="8pA-cv-oqW">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_large" translatesAutoresizingMaskIntoConstraints="NO" id="8pA-cv-oqW">
                                         <rect key="frame" x="142" y="58" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="6on-Ij-G73"/>
                                             <constraint firstAttribute="height" constant="20" id="RHf-oP-lF1"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_label" translatesAutoresizingMaskIntoConstraints="NO" id="HWa-Mu-OgJ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_large" translatesAutoresizingMaskIntoConstraints="NO" id="HWa-Mu-OgJ">
                                         <rect key="frame" x="163" y="58" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="Beo-AS-Ytl"/>
                                             <constraint firstAttribute="height" constant="20" id="LzZ-F2-0Ew"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_label" translatesAutoresizingMaskIntoConstraints="NO" id="maB-GJ-wMW">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_large" translatesAutoresizingMaskIntoConstraints="NO" id="maB-GJ-wMW">
                                         <rect key="frame" x="184" y="58" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="QTn-zO-bm6"/>
@@ -285,6 +285,11 @@
                 <outlet property="mainDateLabel" destination="Z6m-9c-dJY" id="Ibv-qR-2QP"/>
                 <outlet property="ratingLabel" destination="ZpX-5O-m9g" id="Byz-E3-0uU"/>
                 <outlet property="selectImage" destination="IbP-Wm-taI" id="SYG-2V-GZB"/>
+                <outlet property="start1" destination="mWw-n3-euY" id="ZrM-il-942"/>
+                <outlet property="start2" destination="3c3-V6-rRH" id="rDg-O4-sBs"/>
+                <outlet property="start3" destination="8pA-cv-oqW" id="roN-IR-g4i"/>
+                <outlet property="start4" destination="HWa-Mu-OgJ" id="cKk-yw-R9Y"/>
+                <outlet property="start5" destination="maB-GJ-wMW" id="xhC-4v-13S"/>
                 <outlet property="titleLabel" destination="nL7-Od-ciP" id="jfZ-eB-67W"/>
                 <outlet property="userCountLabel" destination="bO4-S6-5Iw" id="kbS-gi-kSU"/>
                 <outlet property="userRatingLabel" destination="nzz-42-aL0" id="Sjk-vO-TSW"/>
@@ -293,6 +298,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_star_label" width="15" height="15"/>
+        <image name="ic_star_large" width="48" height="48"/>
     </resources>
 </document>

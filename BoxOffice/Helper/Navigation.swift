@@ -31,27 +31,21 @@ extension UIViewController {
         ticketAction = UIAlertAction(title: "예매율", style: .default, handler: {(
             action: UIAlertAction) in
             self.navigationItem.title = "예매율순"
-            NotificationCenter.default.post(name: Notification.Name(loadNotificationKey), object: 0)
-            
-            //0 default http://connect-boxoffice.run.goorm.io/movies?order_type=0
+            getData(resource: "http://connect-boxoffice.run.goorm.io/movies?order_type=0")
         })
         
         let curationAction: UIAlertAction
         curationAction = UIAlertAction(title: "큐레이션", style: .default, handler: {(
             action: UIAlertAction) in
             self.navigationItem.title = "큐레이션"
-            NotificationCenter.default.post(name: Notification.Name(loadNotificationKey), object: 1)
-
-            //1 http://connect-boxoffice.run.goorm.io/movies?order_type=1
+            getData(resource: "http://connect-boxoffice.run.goorm.io/movies?order_type=1")
         })
         
         let openAction: UIAlertAction
         openAction = UIAlertAction(title: "개봉일", style: .default, handler: {(
             action: UIAlertAction) in
             self.navigationItem.title = "개봉일순"
-            NotificationCenter.default.post(name: Notification.Name(loadNotificationKey), object: 2)
-
-            //2 http://connect-boxoffice.run.goorm.io/movies?order_type=2
+            getData(resource: "http://connect-boxoffice.run.goorm.io/movies?order_type=2")
         })
         
         alertController.addAction(noAction)

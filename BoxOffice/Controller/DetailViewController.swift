@@ -94,6 +94,10 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func checkStar(star: Double) {
+        print(star/2)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
    
         if indexPath.section == 0 {
@@ -109,6 +113,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.userCountLabel.text = detailInfo?.audience.description
             cell.directorLabel.text = detailInfo?.director
             cell.actorLabel.text = detailInfo?.actor
+            checkStar(star: detailInfo?.user_rating ?? 0)
             
             if let grade = detailInfo?.grade {
                 cell.gradeImage.image = UIImage(named: checkGrade(grade: grade))
