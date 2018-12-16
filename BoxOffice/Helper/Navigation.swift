@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIViewController {
-    
+
     func setRightButton() {
         let rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "ic_settings"), style: .done, target: self, action: #selector(UIViewController.clickSetting))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
@@ -30,6 +30,7 @@ extension UIViewController {
         let ticketAction: UIAlertAction
         ticketAction = UIAlertAction(title: "예매율", style: .default, handler: {(
             action: UIAlertAction) in
+            Singleton.shared.type = "예매율순"
             self.navigationItem.title = "예매율순"
             getData(resource: "http://connect-boxoffice.run.goorm.io/movies?order_type=0")
         })
@@ -37,6 +38,7 @@ extension UIViewController {
         let curationAction: UIAlertAction
         curationAction = UIAlertAction(title: "큐레이션", style: .default, handler: {(
             action: UIAlertAction) in
+            Singleton.shared.type = "큐레이션"
             self.navigationItem.title = "큐레이션"
             getData(resource: "http://connect-boxoffice.run.goorm.io/movies?order_type=1")
         })
@@ -44,6 +46,7 @@ extension UIViewController {
         let openAction: UIAlertAction
         openAction = UIAlertAction(title: "개봉일", style: .default, handler: {(
             action: UIAlertAction) in
+            Singleton.shared.type = "개봉일순"
             self.navigationItem.title = "개봉일순"
             getData(resource: "http://connect-boxoffice.run.goorm.io/movies?order_type=2")
         })

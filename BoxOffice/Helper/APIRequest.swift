@@ -6,14 +6,17 @@
 //  Copyright © 2018 hyerikim. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 func getData(resource: String) {
     let defaultSession = URLSession(configuration: .default)
     guard let url = URL(string: "\(resource)") else { return }
     let request = URLRequest(url: url)
     let dataTask = defaultSession.dataTask(with: request) { data, response, error in
-        guard error == nil else { return } // 에러처리
+        guard error == nil else {
+            
+            return
+        } // 에러처리
         if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
             do {
                 let apiResponse: APIResponse = try JSONDecoder().decode(APIResponse.self, from: data)
@@ -32,6 +35,7 @@ class Singleton {
     static let shared = Singleton()
     
     var movieList: [Movies]?
+    var type = "예매율순"
 
 }
 
