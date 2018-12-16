@@ -14,7 +14,7 @@ func getData(resource: String) {
     let request = URLRequest(url: url)
     let dataTask = defaultSession.dataTask(with: request) { data, response, error in
         guard error == nil else {
-            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: failNotificationKey), object: nil)
             return
         }
         
@@ -28,4 +28,5 @@ func getData(resource: String) {
         }
     }
     dataTask.resume()
+    
 }

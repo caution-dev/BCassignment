@@ -94,8 +94,9 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func checkStar(star: Double) {
-        print(star/2)
+    func checkStar(star: Double) -> Int {
+        print(round(star/2))
+        return Int(round(star/2))
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,7 +114,27 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.userCountLabel.text = detailInfo?.audience.description
             cell.directorLabel.text = detailInfo?.director
             cell.actorLabel.text = detailInfo?.actor
-            checkStar(star: detailInfo?.user_rating ?? 0)
+            let count = checkStar(star: detailInfo?.user_rating ?? 0)
+            
+            switch count {
+            case 5:
+                cell.start5.image = UIImage(named: "ic_star_large_full")
+                fallthrough
+            case 4:
+                cell.start4.image = UIImage(named: "ic_star_large_full")
+                fallthrough
+            case 3:
+                cell.start3.image = UIImage(named: "ic_star_large_full")
+                fallthrough
+            case 2:
+                cell.start2.image = UIImage(named: "ic_star_large_full")
+                fallthrough
+            case 1:
+                cell.start1.image = UIImage(named: "ic_star_large_full")
+                fallthrough
+            default:
+                print("hello")
+            }
             
             if let grade = detailInfo?.grade {
                 cell.gradeImage.image = UIImage(named: checkGrade(grade: grade))

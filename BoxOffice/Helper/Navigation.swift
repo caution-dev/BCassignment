@@ -10,6 +10,25 @@ import UIKit
 
 extension UIViewController {
 
+    func showToast(message : String) {
+        
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 125, y: self.view.frame.size.height - 100, width: 250, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.font = UIFont(name: "System", size: 10.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 2.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
+    
     func setRightButton() {
         let rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "ic_settings"), style: .done, target: self, action: #selector(UIViewController.clickSetting))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
@@ -33,6 +52,7 @@ extension UIViewController {
             Singleton.shared.type = "예매율순"
             Singleton.shared.typeOrder = 0
             self.navigationItem.title = "예매율순"
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: startNotificationKey), object: nil)
             getData(resource: "http://connect-boxoffice.run.goorm.io/movies?order_type=0")
         })
         
@@ -42,6 +62,7 @@ extension UIViewController {
             Singleton.shared.type = "큐레이션"
             Singleton.shared.typeOrder = 1
             self.navigationItem.title = "큐레이션"
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: startNotificationKey), object: nil)
             getData(resource: "http://connect-boxoffice.run.goorm.io/movies?order_type=1")
         })
         
@@ -51,6 +72,7 @@ extension UIViewController {
             Singleton.shared.type = "개봉일순"
             Singleton.shared.typeOrder = 2
             self.navigationItem.title = "개봉일순"
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: startNotificationKey), object: nil)
             getData(resource: "http://connect-boxoffice.run.goorm.io/movies?order_type=2")
         })
         

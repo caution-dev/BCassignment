@@ -9,3 +9,5 @@
 import Foundation
 
 let loadNotificationKey = "com.boxOffice.load"
+let startNotificationKey = "com.boxOffice.start"
+let failNotificationKey = "com.boxOffice.fail"
