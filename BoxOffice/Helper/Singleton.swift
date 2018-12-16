@@ -14,7 +14,7 @@ class Singleton {
     static let shared = Singleton()
     
     var movieList: [Movies]?
-    var type = "예매율순"
+    var type = "예매율"
     var typeOrder = 0
     
 }

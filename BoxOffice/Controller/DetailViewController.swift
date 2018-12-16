@@ -53,6 +53,7 @@ class DetailViewController: UIViewController {
     }
 }
 
+//MARK: request detailview API
 extension DetailViewController {
     
     func loadDetailData(value: String) {
