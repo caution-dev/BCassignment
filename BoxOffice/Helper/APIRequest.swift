@@ -9,8 +9,8 @@
 import UIKit
 
 func getData(resource: String) {
+    guard let url = URL(string: resource) else { return }
     let defaultSession = URLSession(configuration: .default)
-    guard let url = URL(string: "\(resource)") else { return }
     let request = URLRequest(url: url)
     let dataTask = defaultSession.dataTask(with: request) { data, response, error in
         guard error == nil else {
@@ -20,13 +20,13 @@ func getData(resource: String) {
         
         if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
             do {
-                let apiResponse: APIResponse = try JSONDecoder().decode(APIResponse.self, from: data)
+                let apiResponse = try JSONDecoder().decode(MoviesResponse.self, from: data)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: loadNotificationKey), object: nil, userInfo: ["movieList":apiResponse.movies])
             } catch (let error) {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: failNotificationKey), object: nil)
                 print(error)
             }
         }
     }
     dataTask.resume()
-    
 }

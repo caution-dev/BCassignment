@@ -91,6 +91,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="3iS-4n-Pqd" id="uyq-3D-n4J"/>
+                                    <outlet property="delegate" destination="3iS-4n-Pqd" id="pzF-uu-Nto"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -189,6 +193,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="6fm-vS-OD7" id="pRV-c2-lFI"/>
+                                    <outlet property="delegate" destination="6fm-vS-OD7" id="Mrw-ln-TPL"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -239,10 +247,10 @@
             </objects>
             <point key="canvasLocation" x="1663" y="-647"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="BS1-8j-mb3">
             <objects>
-                <tabBarController id="Xo5-4m-Uea" sceneMemberID="viewController">
+                <tabBarController id="Xo5-4m-Uea" customClass="TabBarViewController" customModule="BoxOffice" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PAy-O9-H2G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -302,6 +310,6 @@
         <image name="ic_table" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2LP-ao-edS"/>
+        <segue reference="grf-uW-Kac"/>
     </inferredMetricsTieBreakers>
 </document>

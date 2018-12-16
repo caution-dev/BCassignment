@@ -16,4 +16,5 @@ class Singleton {
     var movieList: [Movies]?
     var type = "예매율순"
     var typeOrder = 0
+    
 }

@@ -133,7 +133,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.start1.image = UIImage(named: "ic_star_large_full")
                 fallthrough
             default:
-                print("hello")
+                break
             }
             
             if let grade = detailInfo?.grade {

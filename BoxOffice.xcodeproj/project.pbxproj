@@ -26,6 +26,7 @@
 		355DA6A721C5357E00EA84F8 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355DA6A621C5357E00EA84F8 /* APIRequest.swift */; };
 		355DA6A921C5572600EA84F8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355DA6A821C5572500EA84F8 /* Notification.swift */; };
 		355DA6AD21C674AF00EA84F8 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355DA6AC21C674AF00EA84F8 /* Singleton.swift */; };
+		355DA6AF21C6B10200EA84F8 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355DA6AE21C6B10200EA84F8 /* TabBarViewController.swift */; };
 		35CFDA1621C431A200F39DF3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CFDA1521C431A200F39DF3 /* DetailViewController.swift */; };
 		35CFDA1821C4355100F39DF3 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CFDA1721C4355100F39DF3 /* DetailModel.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		355DA6A621C5357E00EA84F8 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		355DA6A821C5572500EA84F8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		355DA6AC21C674AF00EA84F8 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		355DA6AE21C6B10200EA84F8 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		35CFDA1521C431A200F39DF3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		35CFDA1721C4355100F39DF3 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +131,7 @@
 				35442AE521C3F37C00CBCE7D /* CollectionViewController.swift */,
 				35442AD521C3F0D100CBCE7D /* TableViewController.swift */,
 				35CFDA1521C431A200F39DF3 /* DetailViewController.swift */,
+				355DA6AE21C6B10200EA84F8 /* TabBarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				35442AD421C3F0D100CBCE7D /* AppDelegate.swift in Sources */,
 				355DA6A121C5097E00EA84F8 /* CommentTableViewCell.swift in Sources */,
 				355DA6A721C5357E00EA84F8 /* APIRequest.swift in Sources */,
+				355DA6AF21C6B10200EA84F8 /* TabBarViewController.swift in Sources */,
 				35442AEF21C404B300CBCE7D /* DataModel.swift in Sources */,
 				355DA6A521C52D1400EA84F8 /* Navigation.swift in Sources */,
 				355DA6A921C5572600EA84F8 /* Notification.swift in Sources */,
