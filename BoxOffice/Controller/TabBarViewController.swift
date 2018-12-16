@@ -13,11 +13,21 @@ class TabBarViewController: UITabBarController {
     let loadKey = Notification.Name(loadNotificationKey)
     let startKey = Notification.Name(startNotificationKey)
     let failKey = Notification.Name(failNotificationKey)
-    
+    lazy var imageCache = NSCache<AnyObject, AnyObject>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData(resource: "http://connect-boxoffice.run.goorm.io/movies?order_type=0")
 
+    }
+ 
+    func getCache(image: Data) -> UIImage? {
+        if let existimageCache = imageCache.object(forKey: image as AnyObject) {
+            return existimageCache as? UIImage
+        } else {
+            let imageToCache = UIImage(data: image)
+            imageCache.setObject(imageToCache!, forKey: image as AnyObject)
+            return imageToCache
+        }
     }
     
 }

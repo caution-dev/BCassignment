@@ -12,69 +12,52 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var detailId = ""
-    private let detailUrl = "http://connect-boxoffice.run.goorm.io/movie?id="
-    private let commentUrl = "http://connect-boxoffice.run.goorm.io/comments?movie_id="
+    private let commentKey = Notification.Name(commentNotificationKey)
+    private let detailKey = Notification.Name(detailNotificationKey)
+    private let tabbar = TabBarViewController()
     private var cellIdentifier = "Cell"
     private var commentList = [Comment]()
     private var detailInfo: DetailMovie?
 
+    var detailId: String = ""{
+        willSet(value){
+            loadData(resource: "http://connect-boxoffice.run.goorm.io/movie?id=\(value)")
+            loadComment(resouce: "http://connect-boxoffice.run.goorm.io/comments?movie_id=\(value)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName:"DetailTableViewCell",bundle: nil), forCellReuseIdentifier: "\(cellIdentifier)1")
         tableView.register(UINib(nibName:"CommentTableViewCell",bundle: nil), forCellReuseIdentifier: cellIdentifier)
-
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        loadData()
-        loadComment()
+        createObserve()
     }
     
-    func loadComment() {
-        let defaultSession = URLSession(configuration: .default)
-        guard let url = URL(string: "\(commentUrl)\(detailId)") else { return }
-        let request = URLRequest(url: url)
-        let dataTask = defaultSession.dataTask(with: request) { [weak self] data, response, error in
-            guard let self = self else { return }
-            guard error == nil else { return } // 에러처리
-            if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                do {
-                    let response = try JSONDecoder().decode(CommentResponse.self, from: data)
-                    self.commentList = response.comments
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } catch(let error) {
-                    print(error)
-                }
-            }
-        }
-        dataTask.resume()
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
-    func loadData() {
-        let defaultSession = URLSession(configuration: .default)
-        guard let url = URL(string: "\(detailUrl)\(detailId)" ) else { return }
-        let request = URLRequest(url: url)
-        let dataTask = defaultSession.dataTask(with: request) { [weak self] data, response, error in
-            guard let self = self else { return }
-            guard error == nil else { return } // 에러 처리
-            if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                do {
-                    let response = try JSONDecoder().decode(DetailMovie.self, from: data)
-                    self.navigationItem.title = response.title
-                    self.detailInfo = response
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                    print(response)
-                } catch (let error) {
-                    print(error)
-                }
-            }
+    func createObserve() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.commentLoad), name: commentKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.detailLoad), name: detailKey, object: nil)
+    }
+    
+    @objc private func commentLoad(notification: NSNotification) {
+        guard let comment = notification.userInfo?["commentList"] as? [Comment] else { return }
+        commentList = comment
+        DispatchQueue.main.async {
+            print("comment")
+            self.tableView.reloadData()
         }
-        dataTask.resume()
+    }
+    
+    @objc private func detailLoad(notification: NSNotification) {
+        guard let detail = notification.userInfo?["detailInfo"] as? DetailMovie else { return }
+        detailInfo = detail
+        DispatchQueue.main.async {
+            print("detail")
+            self.tableView.reloadData()
+        }
     }
     
 }
@@ -95,7 +78,6 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func checkStar(star: Double) -> Int {
-        print(round(star/2))
         return Int(round(star/2))
     }
     
@@ -105,8 +87,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellIdentifier)1", for: indexPath) as! DetailTableViewCell
             guard let imageURL = URL(string: detailInfo?.image ?? "") else { return cell }
             guard let imageData = try? Data(contentsOf: imageURL) else { return cell }
-            
-            cell.selectImage.image = UIImage(data: imageData)
+
+            cell.selectImage.image = tabbar.getCache(image: imageData)
             cell.titleLabel.text = detailInfo?.title
             cell.mainDateLabel.text = detailInfo?.date
             cell.detailLabel.text = detailInfo?.synopsis
@@ -155,6 +137,28 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.nickLabel.text = commentList[indexPath.row].writer
             cell.dateLabel.text = "\(commentList[indexPath.row].timestamp)"
             cell.commentLabel.text = commentList[indexPath.row].contents
+            let count = checkStar(star: commentList[indexPath.row].rating)
+
+            switch count {
+            case 5:
+                cell.star5.image = UIImage(named: "ic_star_large_full")
+                fallthrough
+            case 4:
+                cell.star4.image = UIImage(named: "ic_star_large_full")
+                fallthrough
+            case 3:
+                cell.star3.image = UIImage(named: "ic_star_large_full")
+                fallthrough
+            case 2:
+                cell.star2.image = UIImage(named: "ic_star_large_full")
+                fallthrough
+            case 1:
+                cell.star1.image = UIImage(named: "ic_star_large_full")
+                fallthrough
+            default:
+                break
+            }
+            
             return cell
         }
 
