@@ -25,6 +25,7 @@
 		355DA6A521C52D1400EA84F8 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355DA6A421C52D1400EA84F8 /* Navigation.swift */; };
 		355DA6A721C5357E00EA84F8 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355DA6A621C5357E00EA84F8 /* APIRequest.swift */; };
 		355DA6A921C5572600EA84F8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355DA6A821C5572500EA84F8 /* Notification.swift */; };
+		355DA6AD21C674AF00EA84F8 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355DA6AC21C674AF00EA84F8 /* Singleton.swift */; };
 		35CFDA1621C431A200F39DF3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CFDA1521C431A200F39DF3 /* DetailViewController.swift */; };
 		35CFDA1821C4355100F39DF3 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CFDA1721C4355100F39DF3 /* DetailModel.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		355DA6A421C52D1400EA84F8 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		355DA6A621C5357E00EA84F8 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		355DA6A821C5572500EA84F8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		355DA6AC21C674AF00EA84F8 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		35CFDA1521C431A200F39DF3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		35CFDA1721C4355100F39DF3 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +139,7 @@
 				355DA6A421C52D1400EA84F8 /* Navigation.swift */,
 				355DA6A621C5357E00EA84F8 /* APIRequest.swift */,
 				355DA6A821C5572500EA84F8 /* Notification.swift */,
+				355DA6AC21C674AF00EA84F8 /* Singleton.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				355DA6A521C52D1400EA84F8 /* Navigation.swift in Sources */,
 				355DA6A921C5572600EA84F8 /* Notification.swift in Sources */,
 				355DA69821C4EC8900EA84F8 /* CommentModel.swift in Sources */,
+				355DA6AD21C674AF00EA84F8 /* Singleton.swift in Sources */,
 				35CFDA1621C431A200F39DF3 /* DetailViewController.swift in Sources */,
 				355DA69D21C4F61700EA84F8 /* DetailTableViewCell.swift in Sources */,
 			);

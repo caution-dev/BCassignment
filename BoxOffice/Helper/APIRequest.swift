@@ -16,7 +16,8 @@ func getData(resource: String) {
         guard error == nil else {
             
             return
-        } // 에러처리
+        }
+        
         if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
             do {
                 let apiResponse: APIResponse = try JSONDecoder().decode(APIResponse.self, from: data)
@@ -28,14 +29,3 @@ func getData(resource: String) {
     }
     dataTask.resume()
 }
-
-class Singleton {
-    
-    private init() {}
-    static let shared = Singleton()
-    
-    var movieList: [Movies]?
-    var type = "예매율순"
-
-}
-
