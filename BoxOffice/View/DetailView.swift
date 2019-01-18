@@ -50,24 +50,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.actorLabel.text = detailInfo?.actor
             let count = checkStar(star: detailInfo?.user_rating ?? 0)
             
-            switch count {
-            case 5:
-                cell.start5.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 4:
-                cell.start4.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 3:
-                cell.start3.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 2:
-                cell.start2.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 1:
-                cell.start1.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            default:
-                break
+            for i in 0..<count {
+                cell.starImageViews[i].image = UIImage(named: "ic_star_large_full")
             }
             
             if let grade = detailInfo?.grade {
@@ -91,24 +75,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.commentLabel.text = commentList[indexPath.row].contents
             let count = checkStar(star: commentList[indexPath.row].rating)
         
-            switch count {
-            case 5:
-                cell.star5.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 4:
-                cell.star4.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 3:
-                cell.star3.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 2:
-                cell.star2.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 1:
-                cell.star1.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            default:
-                break
+            for i in 0..<count {
+                cell.starImageViews[i].image = UIImage(named: "ic_star_large_full")
             }
             
             return cell
