@@ -68,9 +68,9 @@ class TableViewController: UIViewController {
 extension TableViewController {
     
     func createObserve() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateData(notification:)), name: tabbar.loadKey, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.indicatorStart), name: tabbar.startKey, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.failMessage), name: tabbar.failKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateData(notification:)), name: .loadNotificationKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.indicatorStart), name: .startNotificationKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.failMessage), name: .failNotificationKey, object: nil)
     }
     
     @objc private func refreshData(_ sender: Any) {
