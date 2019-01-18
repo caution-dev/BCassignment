@@ -107,12 +107,12 @@
                 <outlet property="commentLabel" destination="ik5-b0-5Io" id="2sL-sn-Wuk"/>
                 <outlet property="dateLabel" destination="CoL-DD-yGW" id="kf1-kx-Dlg"/>
                 <outlet property="nickLabel" destination="PHi-w8-EM1" id="kRi-wd-s23"/>
-                <outlet property="star1" destination="L1B-7r-m2D" id="wGy-bt-tUu"/>
-                <outlet property="star2" destination="sPp-14-rdL" id="eza-uW-3c8"/>
-                <outlet property="star3" destination="viQ-G5-z3k" id="bZf-hV-1ge"/>
-                <outlet property="star4" destination="btn-rB-ehT" id="x0g-wK-78F"/>
-                <outlet property="star5" destination="ze0-FH-0yS" id="Phs-hk-qSR"/>
                 <outlet property="userImage" destination="MQw-hD-go5" id="Bg5-vH-7Sq"/>
+                <outletCollection property="starImageViews" destination="L1B-7r-m2D" collectionClass="NSMutableArray" id="Srv-a8-lka"/>
+                <outletCollection property="starImageViews" destination="sPp-14-rdL" collectionClass="NSMutableArray" id="ATj-ep-07U"/>
+                <outletCollection property="starImageViews" destination="viQ-G5-z3k" collectionClass="NSMutableArray" id="aiU-eV-oeH"/>
+                <outletCollection property="starImageViews" destination="btn-rB-ehT" collectionClass="NSMutableArray" id="2aI-LY-fOu"/>
+                <outletCollection property="starImageViews" destination="ze0-FH-0yS" collectionClass="NSMutableArray" id="7H0-Gk-Jnt"/>
             </connections>
             <point key="canvasLocation" x="145.59999999999999" y="500.59970014992507"/>
         </tableViewCell>
