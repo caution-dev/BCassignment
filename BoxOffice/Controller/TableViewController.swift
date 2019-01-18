@@ -16,7 +16,7 @@ class TableViewController: UIViewController {
     private let refresh = UIRefreshControl()
     private let indicator = UIActivityIndicatorView()
     private let tabbar = TabBarViewController()
-    private var movie = Singleton.shared.movieList
+    private var movies = Singleton.shared.movieList
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +87,7 @@ extension TableViewController {
     
     @objc func updateData(notification: NSNotification) {
         guard let getMovieList = notification.userInfo?["movieList"] as? [Movies] else { return }
-        movie = getMovieList
+        movies = getMovieList
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.indicator.stopAnimating()
@@ -101,7 +101,7 @@ extension TableViewController {
 extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movie?.count ?? 0
+        return movies?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
