@@ -30,7 +30,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellIdentifier)1", for: indexPath) as! DetailTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: detailCellIdentifier, for: indexPath) as! DetailTableViewCell
             
             DispatchQueue.global().async {
                 guard let imageURL = URL(string: self.detailInfo?.image ?? "") else { return }
@@ -85,7 +85,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CommentTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: commentCellIdentifier, for: indexPath) as! CommentTableViewCell
             cell.nickLabel.text = commentList[indexPath.row].writer
             cell.dateLabel.text = "\(commentList[indexPath.row].timestamp)"
             cell.commentLabel.text = commentList[indexPath.row].contents

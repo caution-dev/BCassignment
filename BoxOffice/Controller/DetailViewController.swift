@@ -13,7 +13,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let tabbar = TabBarViewController()
-    var cellIdentifier = "Cell"
+    var detailCellIdentifier = "DetailCell"
+    var commentCellIdentifier = "CommentCell"
     var commentList = [Comment]()
     var detailInfo: DetailMovie?
     private let dispatchGroup = DispatchGroup()
@@ -33,8 +34,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName:"DetailTableViewCell",bundle: nil), forCellReuseIdentifier: "\(cellIdentifier)1")
-        tableView.register(UINib(nibName:"CommentTableViewCell",bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UINib(nibName:"DetailTableViewCell",bundle: nil), forCellReuseIdentifier: detailCellIdentifier)
+        tableView.register(UINib(nibName:"CommentTableViewCell",bundle: nil), forCellReuseIdentifier: commentCellIdentifier)
         createIndicator()
 
         dispatchGroup.notify(queue: .main) {
