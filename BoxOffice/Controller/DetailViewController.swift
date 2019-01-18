@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     let tabbar = TabBarViewController()
     var detailCellIdentifier = "DetailCell"
     var commentCellIdentifier = "CommentCell"
-    var commentList = [Comment]()
+    var comments = [Comment]()
     var detailInfo: DetailMovie?
     private let dispatchGroup = DispatchGroup()
     private let indicator = UIActivityIndicatorView()
@@ -73,7 +73,7 @@ extension DetailViewController {
             if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
                 do {
                     let response = try JSONDecoder().decode(CommentResponse.self, from: data)
-                    self.commentList = response.comments
+                    self.comments = response.comments
                     self.dispatchGroup.leave()
                 } catch(let error) {
                     print(error)

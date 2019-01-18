@@ -19,7 +19,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 1
         } else {
-            return commentList.count
+            return comments.count
         }
     }
     
@@ -70,10 +70,11 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: commentCellIdentifier, for: indexPath) as! CommentTableViewCell
-            cell.nickLabel.text = commentList[indexPath.row].writer
-            cell.dateLabel.text = "\(commentList[indexPath.row].timestamp)"
-            cell.commentLabel.text = commentList[indexPath.row].contents
-            let count = checkStar(star: commentList[indexPath.row].rating)
+            let comment = comments[indexPath.row]
+            cell.nickLabel.text = comment.writer
+            cell.dateLabel.text = "\(comment.timestamp)"
+            cell.commentLabel.text = comment.contents
+            let count = checkStar(star: comment.rating)
         
             for i in 0..<count {
                 cell.starImageViews[i].image = UIImage(named: "ic_star_large_full")
