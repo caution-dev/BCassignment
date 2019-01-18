@@ -33,9 +33,10 @@ class TableViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailViewController {
-            if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let movie = movie {
-                destination.detailId = movie[indexPath.row].id
-                destination.detailTitle = movie[indexPath.row].title
+            if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let movies = movies {
+                let movie = movies[indexPath.row]
+                destination.detailId = movie.id
+                destination.detailTitle = movie.title
             }
         }
     }
@@ -106,10 +107,10 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TableViewCell
-        guard let movie = movie else { return cell }
-        
+        guard let movies = movies else { return cell }
+        let movie = movies[indexPath.row]
         DispatchQueue.global().async {
-            guard let imageURL = URL(string: movie[indexPath.row].thumb) else { return }
+            guard let imageURL = URL(string: movie.thumb) else { return }
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
             
             DispatchQueue.main.async {
@@ -117,10 +118,10 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     
-        cell.titleLabel.text = movie[indexPath.row].title
-        cell.descLabel.text = "평점: \(movie[indexPath.row].user_rating) 예매순위: \(movie[indexPath.row].reservation_grade) 예매율: \(movie[indexPath.row].reservation_rate)"
-        cell.dateLabel.text = "개봉일: \(movie[indexPath.row].date)"
-        cell.gradeImage.image = UIImage(named: checkGrade(grade: movie[indexPath.row].grade))
+        cell.titleLabel.text = movie.title
+        cell.descLabel.text = "평점: \(movie.user_rating) 예매순위: \(movie.reservation_grade) 예매율: \(movie.reservation_rate)"
+        cell.dateLabel.text = "개봉일: \(movie.date)"
+        cell.gradeImage.image = UIImage(named: checkGrade(grade: movie.grade))
     
         return cell
     }
