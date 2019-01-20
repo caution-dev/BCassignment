@@ -13,7 +13,7 @@ class TableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private let cellIdentifier = "Cell"
-    private let refresh = UIRefreshControl()
+    private let refreshController = UIRefreshControl()
     private let indicator = UIActivityIndicatorView()
     private let tabbar = TabBarViewController()
     private var movie = Singleton.shared.movieList
@@ -54,12 +54,12 @@ class TableViewController: UIViewController {
         indicator.startAnimating()
         
         if #available(iOS 10.0, *) {
-            tableView.refreshControl = refresh
+            tableView.refreshControl = refreshController
         } else {
-            tableView.addSubview(refresh)
+            tableView.addSubview(refreshController)
         }
         
-        refresh.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        refreshController.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
     
 }
@@ -91,7 +91,7 @@ extension TableViewController {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.indicator.stopAnimating()
-            self.refresh.endRefreshing()
+            self.refreshController.endRefreshing()
         }
     }
     
