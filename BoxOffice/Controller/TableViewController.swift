@@ -118,7 +118,8 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         }
     
         cell.titleLabel.text = movie[indexPath.row].title
-        cell.descLabel.text = "평점: \(movie[indexPath.row].user_rating) 예매순위: \(movie[indexPath.row].reservation_grade) 예매율: \(movie[indexPath.row].reservation_rate)"
+//        cell.descLabel.text = "평점: \(movie[indexPath.row].user_rating) 예매순위: \(movie[indexPath.row].reservation_grade) 예매율: \(movie[indexPath.row].reservation_rate)"
+        cell.descLabel.text = movie[indexPath.row].newDescLabel
         cell.dateLabel.text = "개봉일: \(movie[indexPath.row].date)"
         cell.gradeImage.image = UIImage(named: checkGrade(grade: movie[indexPath.row].grade))
     

@@ -19,6 +19,10 @@ struct Movies: Codable {
     let title: String
     let user_rating: Double
     
+    var newDescLabel: String {
+        return "평점: \(user_rating) 예매순위: \(reservation_grade) 예매율: \(reservation_rate)"
+    }
+    
 }
 
 struct MoviesResponse: Codable {
