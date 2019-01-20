@@ -112,18 +112,13 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         DispatchQueue.global().async {
             guard let imageURL = URL(string: movie.thumb) else { return }
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
-            
+
             DispatchQueue.main.async {
                 cell.thumbImage.image = self.tabbar.getCache(image: imageData)
             }
         }
-    
-        cell.titleLabel.text = movie.title
-//        cell.descLabel.text = "평점: \(movie[indexPath.row].user_rating) 예매순위: \(movie[indexPath.row].reservation_grade) 예매율: \(movie[indexPath.row].reservation_rate)"
-        cell.descLabel.text = movie.newDescLabel
-        cell.dateLabel.text = "개봉일: \(movie.date)"
-        cell.gradeImage.image = UIImage(named: checkGrade(grade: movie.grade))
-    
+        
+        cell.configure(data: movie)
         return cell
     }
     
