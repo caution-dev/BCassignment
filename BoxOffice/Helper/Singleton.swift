@@ -9,12 +9,17 @@
 import Foundation
 
 class Singleton {
+
+    var movieList: [Movies]?
+    var type = "예매율"
+    var typeOrder = 0
+
     
     private init() {}
     static let shared = Singleton()
     
-    var movieList: [Movies]?
-    var type = "예매율"
-    var typeOrder = 0
+//    var movieList: [Movies]?
+//    var type = "예매율"
+//    var typeOrder = 0
     
 }
