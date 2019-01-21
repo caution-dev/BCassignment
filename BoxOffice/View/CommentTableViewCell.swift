@@ -10,11 +10,7 @@ import UIKit
 
 class CommentTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var star1: UIImageView!
-    @IBOutlet weak var star2: UIImageView!
-    @IBOutlet weak var star3: UIImageView!
-    @IBOutlet weak var star4: UIImageView!
-    @IBOutlet weak var star5: UIImageView!
+    @IBOutlet var starImageViews: [UIImageView]!
     
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var nickLabel: UILabel!
@@ -31,4 +27,13 @@ class CommentTableViewCell: UITableViewCell {
 
     }
     
+    override func prepareForReuse() {
+        initStarImageViews()
+    }
+    
+    private func initStarImageViews() {
+        for i in stride(from: 0, to: 5, by: 1) {
+            starImageViews[i].image = UIImage(named: "ic_star_large")
+        }
+    }
 }

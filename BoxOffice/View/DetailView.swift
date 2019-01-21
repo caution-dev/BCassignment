@@ -19,7 +19,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 1
         } else {
-            return commentList.count
+            return comments.count
         }
     }
     
@@ -30,7 +30,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "\(cellIdentifier)1", for: indexPath) as! DetailTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: detailCellIdentifier, for: indexPath) as! DetailTableViewCell
             
             DispatchQueue.global().async {
                 guard let imageURL = URL(string: self.detailInfo?.image ?? "") else { return }
@@ -50,24 +50,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.actorLabel.text = detailInfo?.actor
             let count = checkStar(star: detailInfo?.user_rating ?? 0)
             
-            switch count {
-            case 5:
-                cell.start5.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 4:
-                cell.start4.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 3:
-                cell.start3.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 2:
-                cell.start2.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 1:
-                cell.start1.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            default:
-                break
+            for i in 0..<count {
+                cell.starImageViews[i].image = UIImage(named: "ic_star_large_full")
             }
             
             if let grade = detailInfo?.grade {
@@ -85,30 +69,15 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CommentTableViewCell
-            cell.nickLabel.text = commentList[indexPath.row].writer
-            cell.dateLabel.text = "\(commentList[indexPath.row].timestamp)"
-            cell.commentLabel.text = commentList[indexPath.row].contents
-            let count = checkStar(star: commentList[indexPath.row].rating)
+            let cell = tableView.dequeueReusableCell(withIdentifier: commentCellIdentifier, for: indexPath) as! CommentTableViewCell
+            let comment = comments[indexPath.row]
+            cell.nickLabel.text = comment.writer
+            cell.dateLabel.text = "\(comment.timestamp)"
+            cell.commentLabel.text = comment.contents
+            let count = checkStar(star: comment.rating)
         
-            switch count {
-            case 5:
-                cell.star5.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 4:
-                cell.star4.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 3:
-                cell.star3.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 2:
-                cell.star2.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            case 1:
-                cell.star1.image = UIImage(named: "ic_star_large_full")
-                fallthrough
-            default:
-                break
+            for i in 0..<count {
+                cell.starImageViews[i].image = UIImage(named: "ic_star_large_full")
             }
             
             return cell

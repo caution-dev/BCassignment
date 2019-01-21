@@ -10,11 +10,7 @@ import UIKit
 
 class DetailTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var start1: UIImageView!
-    @IBOutlet weak var start2: UIImageView!
-    @IBOutlet weak var start3: UIImageView!
-    @IBOutlet weak var start4: UIImageView!
-    @IBOutlet weak var start5: UIImageView!
+    @IBOutlet var starImageViews: [UIImageView]!
     
     @IBOutlet weak var selectImage: UIImageView!
     @IBOutlet weak var gradeImage: UIImageView!
@@ -34,7 +30,15 @@ class DetailTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     
+    override func prepareForReuse() {
+        initStarImageViews()
+    }
+    
+    private func initStarImageViews() {
+        for i in stride(from: 0, to: 5, by: 1) {
+            starImageViews[i].image = UIImage(named: "ic_star_large")
+        }
+    }
 }

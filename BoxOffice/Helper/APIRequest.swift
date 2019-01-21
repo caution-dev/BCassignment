@@ -14,16 +14,16 @@ func getData(resource: String) {
     let request = URLRequest(url: url)
     let dataTask = defaultSession.dataTask(with: request) { data, response, error in
         guard error == nil else {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: failNotificationKey), object: nil)
+            NotificationCenter.default.post(name: .failNotificationKey, object: nil)
             return
         }
         if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
             do {
                 let apiResponse = try JSONDecoder().decode(MoviesResponse.self, from: data)
                 Singleton.shared.movieList = apiResponse.movies
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: loadNotificationKey), object: nil, userInfo: ["movieList":apiResponse.movies])
+                NotificationCenter.default.post(name: .loadNotificationKey, object: nil, userInfo: ["movieList":apiResponse.movies])
             } catch (let error) {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: failNotificationKey), object: nil)
+                NotificationCenter.default.post(name: .failNotificationKey, object: nil)
                 print(error)
             }
         }

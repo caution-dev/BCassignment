@@ -10,9 +10,6 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
 
-    let loadKey = Notification.Name(loadNotificationKey)
-    let startKey = Notification.Name(startNotificationKey)
-    let failKey = Notification.Name(failNotificationKey)
     lazy var imageCache = NSCache<AnyObject, AnyObject>()
 
     override func viewDidLoad() {

@@ -16,7 +16,7 @@ class TableViewController: UIViewController {
     private let refresh = UIRefreshControl()
     private let indicator = UIActivityIndicatorView()
     private let tabbar = TabBarViewController()
-    private var movie = Singleton.shared.movieList
+    private var movies = Singleton.shared.movieList
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +33,10 @@ class TableViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailViewController {
-            if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let movie = movie {
-                destination.detailId = movie[indexPath.row].id
-                destination.detailTitle = movie[indexPath.row].title
+            if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let movies = movies {
+                let movie = movies[indexPath.row]
+                destination.detailId = movie.id
+                destination.detailTitle = movie.title
             }
         }
     }
@@ -68,9 +69,9 @@ class TableViewController: UIViewController {
 extension TableViewController {
     
     func createObserve() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateData(notification:)), name: tabbar.loadKey, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.indicatorStart), name: tabbar.startKey, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.failMessage), name: tabbar.failKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateData(notification:)), name: .loadNotificationKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.indicatorStart), name: .startNotificationKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.failMessage), name: .failNotificationKey, object: nil)
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -87,7 +88,7 @@ extension TableViewController {
     
     @objc func updateData(notification: NSNotification) {
         guard let getMovieList = notification.userInfo?["movieList"] as? [Movies] else { return }
-        movie = getMovieList
+        movies = getMovieList
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.indicator.stopAnimating()
@@ -101,15 +102,15 @@ extension TableViewController {
 extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movie?.count ?? 0
+        return movies?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TableViewCell
-        guard let movie = movie else { return cell }
-        
+        guard let movies = movies else { return cell }
+        let movie = movies[indexPath.row]
         DispatchQueue.global().async {
-            guard let imageURL = URL(string: movie[indexPath.row].thumb) else { return }
+            guard let imageURL = URL(string: movie.thumb) else { return }
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
             
             DispatchQueue.main.async {
@@ -117,10 +118,10 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     
-        cell.titleLabel.text = movie[indexPath.row].title
-        cell.descLabel.text = "평점: \(movie[indexPath.row].user_rating) 예매순위: \(movie[indexPath.row].reservation_grade) 예매율: \(movie[indexPath.row].reservation_rate)"
-        cell.dateLabel.text = "개봉일: \(movie[indexPath.row].date)"
-        cell.gradeImage.image = UIImage(named: checkGrade(grade: movie[indexPath.row].grade))
+        cell.titleLabel.text = movie.title
+        cell.descLabel.text = "평점: \(movie.user_rating) 예매순위: \(movie.reservation_grade) 예매율: \(movie.reservation_rate)"
+        cell.dateLabel.text = "개봉일: \(movie.date)"
+        cell.gradeImage.image = UIImage(named: checkGrade(grade: movie.grade))
     
         return cell
     }

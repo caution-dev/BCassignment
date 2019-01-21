@@ -8,8 +8,10 @@
 
 import Foundation
 
-let loadNotificationKey = "com.boxOffice.load"
-let startNotificationKey = "com.boxOffice.start"
-let failNotificationKey = "com.boxOffice.fail"
-let detailNotificationKey = "com.boxOffice.detail"
-let commentNotificationKey = "com.boxOffice.comment"
+extension Notification.Name {
+    static let loadNotificationKey = Notification.Name("com.boxOffice.load")
+    static let startNotificationKey = Notification.Name("com.boxOffice.start")
+    static let failNotificationKey = Notification.Name("com.boxOffice.fail")
+    static let detailNotificationKey = Notification.Name("com.boxOffice.detail")
+    static let commentNotificationKey = Notification.Name("com.boxOffice.comment")
+}

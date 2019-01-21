@@ -13,8 +13,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let tabbar = TabBarViewController()
-    var cellIdentifier = "Cell"
-    var commentList = [Comment]()
+    var detailCellIdentifier = "DetailCell"
+    var commentCellIdentifier = "CommentCell"
+    var comments = [Comment]()
     var detailInfo: DetailMovie?
     private let dispatchGroup = DispatchGroup()
     private let indicator = UIActivityIndicatorView()
@@ -33,8 +34,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName:"DetailTableViewCell",bundle: nil), forCellReuseIdentifier: "\(cellIdentifier)1")
-        tableView.register(UINib(nibName:"CommentTableViewCell",bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UINib(nibName:"DetailTableViewCell",bundle: nil), forCellReuseIdentifier: detailCellIdentifier)
+        tableView.register(UINib(nibName:"CommentTableViewCell",bundle: nil), forCellReuseIdentifier: commentCellIdentifier)
         createIndicator()
 
         dispatchGroup.notify(queue: .main) {
@@ -72,7 +73,7 @@ extension DetailViewController {
             if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
                 do {
                     let response = try JSONDecoder().decode(CommentResponse.self, from: data)
-                    self.commentList = response.comments
+                    self.comments = response.comments
                     self.dispatchGroup.leave()
                 } catch(let error) {
                     print(error)
