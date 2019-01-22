@@ -10,8 +10,7 @@ import UIKit
 
 class CommentTableViewCell: UITableViewCell {
     
-    @IBOutlet var starImageViews: [UIImageView]!
-    
+    @IBOutlet var starImageViews: [UIImageView]!    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var nickLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

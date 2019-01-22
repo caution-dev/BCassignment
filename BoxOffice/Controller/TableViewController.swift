@@ -13,11 +13,11 @@ class TableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private let cellIdentifier = "Cell"
-    private let refresh = UIRefreshControl()
+    private let refreshController = UIRefreshControl()
     private let indicator = UIActivityIndicatorView()
     private let tabbar = TabBarViewController()
     private var movies = Singleton.shared.movieList
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +33,7 @@ class TableViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailViewController {
-            if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let movies = movies {
+             if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let movies = movies {
                 let movie = movies[indexPath.row]
                 destination.detailId = movie.id
                 destination.detailTitle = movie.title
@@ -55,12 +55,12 @@ class TableViewController: UIViewController {
         indicator.startAnimating()
         
         if #available(iOS 10.0, *) {
-            tableView.refreshControl = refresh
+            tableView.refreshControl = refreshController
         } else {
-            tableView.addSubview(refresh)
+            tableView.addSubview(refreshController)
         }
         
-        refresh.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        refreshController.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
     
 }
@@ -92,7 +92,7 @@ extension TableViewController {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.indicator.stopAnimating()
-            self.refresh.endRefreshing()
+            self.refreshController.endRefreshing()
         }
     }
     
@@ -109,20 +109,20 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TableViewCell
         guard let movies = movies else { return cell }
         let movie = movies[indexPath.row]
+
         DispatchQueue.global().async {
             guard let imageURL = URL(string: movie.thumb) else { return }
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
-            
+
             DispatchQueue.main.async {
                 cell.thumbImage.image = self.tabbar.getCache(image: imageData)
             }
         }
-    
         cell.titleLabel.text = movie.title
         cell.descLabel.text = "평점: \(movie.user_rating) 예매순위: \(movie.reservation_grade) 예매율: \(movie.reservation_rate)"
         cell.dateLabel.text = "개봉일: \(movie.date)"
         cell.gradeImage.image = UIImage(named: checkGrade(grade: movie.grade))
-    
+
         return cell
     }
     

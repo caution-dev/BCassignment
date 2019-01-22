@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 //MARK: tableview delegate and datasource
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     

@@ -24,5 +24,14 @@ class TableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    
+    func configure(data: Movies) {
+        
+        titleLabel.text = data.title
+        descLabel.text = data.newDescLabel
+        dateLabel.text = "개봉일: \(data.date)"
+        gradeImage.image = UIImage(named: checkGrade(grade: data.grade))
+        
+    }
 
 }
