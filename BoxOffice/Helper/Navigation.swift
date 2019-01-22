@@ -75,7 +75,7 @@ extension UIViewController {
         Singleton.shared.type = type
         Singleton.shared.typeOrder = orderType
         self.navigationItem.title = type
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: startNotificationKey), object: nil)
+        NotificationCenter.default.post(name: .startNotificationKey, object: nil)
         getData(resource: "http://connect-boxoffice.run.goorm.io/movies?order_type=\(orderType)")
     }
     

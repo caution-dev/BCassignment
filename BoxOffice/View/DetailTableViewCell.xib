@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell1" rowHeight="408" id="KGk-i7-Jjw" customClass="DetailTableViewCell" customModule="BoxOffice" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="408" id="KGk-i7-Jjw" customClass="DetailTableViewCell" customModule="BoxOffice" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="408"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -285,14 +285,14 @@
                 <outlet property="mainDateLabel" destination="Z6m-9c-dJY" id="Ibv-qR-2QP"/>
                 <outlet property="ratingLabel" destination="ZpX-5O-m9g" id="Byz-E3-0uU"/>
                 <outlet property="selectImage" destination="IbP-Wm-taI" id="SYG-2V-GZB"/>
-                <outlet property="start1" destination="mWw-n3-euY" id="ZrM-il-942"/>
-                <outlet property="start2" destination="3c3-V6-rRH" id="rDg-O4-sBs"/>
-                <outlet property="start3" destination="8pA-cv-oqW" id="roN-IR-g4i"/>
-                <outlet property="start4" destination="HWa-Mu-OgJ" id="cKk-yw-R9Y"/>
-                <outlet property="start5" destination="maB-GJ-wMW" id="xhC-4v-13S"/>
                 <outlet property="titleLabel" destination="nL7-Od-ciP" id="jfZ-eB-67W"/>
                 <outlet property="userCountLabel" destination="bO4-S6-5Iw" id="kbS-gi-kSU"/>
                 <outlet property="userRatingLabel" destination="nzz-42-aL0" id="Sjk-vO-TSW"/>
+                <outletCollection property="starImageViews" destination="mWw-n3-euY" collectionClass="NSMutableArray" id="6Lz-fa-37f"/>
+                <outletCollection property="starImageViews" destination="3c3-V6-rRH" collectionClass="NSMutableArray" id="so4-6I-Zw3"/>
+                <outletCollection property="starImageViews" destination="8pA-cv-oqW" collectionClass="NSMutableArray" id="64g-ex-2IJ"/>
+                <outletCollection property="starImageViews" destination="HWa-Mu-OgJ" collectionClass="NSMutableArray" id="Oa2-Ep-KQE"/>
+                <outletCollection property="starImageViews" destination="maB-GJ-wMW" collectionClass="NSMutableArray" id="HPG-tJ-npy"/>
             </connections>
             <point key="canvasLocation" x="145.59999999999999" y="65.667166416791616"/>
         </tableViewCell>
