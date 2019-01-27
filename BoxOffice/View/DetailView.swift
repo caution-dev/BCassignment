@@ -17,11 +17,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return comments.count
-        }
+        return section == 0 ? 1 : comments.count
     }
     
     func checkStar(star: Double) -> Int {
@@ -56,7 +52,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             if let grade = detailInfo?.grade {
-                cell.gradeImage.image = UIImage(named: checkGrade(grade: grade))
+                cell.gradeImage.image = Grade(rawValue: grade)?.image
             }
             
             if let genre = detailInfo?.genre, let duration = detailInfo?.duration {

@@ -116,10 +116,11 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
             }
         }
 
-        cell.titleLabel.text = movieList[indexPath.row].title
-        cell.descLabel.text = " \(movieList[indexPath.row].reservation_grade)위 (\(movieList[indexPath.row].user_rating)) / \(movieList[indexPath.row].reservation_rate)"
-        cell.dateLabel.text = movieList[indexPath.row].date
-        cell.gradeImage.image = UIImage(named: checkGrade(grade: movieList[indexPath.row].grade))
+        let movie = movieList[indexPath.row]
+        cell.titleLabel.text = movie.title
+        cell.descLabel.text = " \(movie.reservation_grade)위 (\(movie.user_rating)) / \(movie.reservation_rate)"
+        cell.dateLabel.text = movie.date
+        cell.gradeImage.image = Grade(rawValue: movie.grade)?.image
 
         return cell
     }

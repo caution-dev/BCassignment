@@ -6,24 +6,24 @@
 //  Copyright © 2018 hyerikim. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-enum Grade: String {
-    case all = "ic_allages"
-    case twelve = "ic_12"
-    case fifteen = "ic_15"
-    case nineteen = "ic_19"
-}
-
-func checkGrade(grade: Int) -> String {
-    switch grade {
-    case 12:
-        return Grade.twelve.rawValue
-    case 15:
-        return Grade.fifteen.rawValue
-    case 19:
-        return Grade.nineteen.rawValue
-    default:
-        return Grade.all.rawValue
+enum Grade: Int {
+    case all = 0
+    case twelve = 12
+    case fifteen = 15
+    case nineteen = 19
+    
+    var image: UIImage? {
+        switch self {
+        case .all:
+            return UIImage(named: "ic_allages")
+        case .twelve:
+            return UIImage(named: "ic_12")
+        case .fifteen:
+            return UIImage(named: "ic_15")
+        case .nineteen:
+            return UIImage(named: "ic_19")
+        }
     }
 }

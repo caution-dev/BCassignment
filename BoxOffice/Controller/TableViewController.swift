@@ -119,7 +119,7 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = movie.title
         cell.descLabel.text = "평점: \(movie.user_rating) 예매순위: \(movie.reservation_grade) 예매율: \(movie.reservation_rate)"
         cell.dateLabel.text = "개봉일: \(movie.date)"
-        cell.gradeImage.image = UIImage(named: checkGrade(grade: movie.grade))
+        cell.gradeImage.image = Grade(rawValue: movie.grade)?.image
 
         return cell
     }
