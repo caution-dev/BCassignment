@@ -24,7 +24,6 @@ class CollectionViewController: UIViewController {
         setRightButton()
         createObserve()
         createIndicator()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,7 +95,6 @@ extension CollectionViewController {
             
         }
     }
-    
 }
 
 //MARK: collectionview delegate and datasource
@@ -125,5 +123,4 @@ extension CollectionViewController: UICollectionViewDelegate, UICollectionViewDa
 
         return cell
     }
-    
 }

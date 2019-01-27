@@ -26,5 +26,7 @@ struct Movies: Codable {
 }
 
 struct MoviesResponse: Codable {
+    
     let movies: [Movies]
+    
 }

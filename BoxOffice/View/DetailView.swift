@@ -68,7 +68,6 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
-            
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: commentCellIdentifier, for: indexPath) as! CommentTableViewCell
             let comment = comments[indexPath.row]

@@ -46,7 +46,7 @@ class TableViewController: UIViewController {
     }
     
     //MARK: set up view
-    func createIndicator(){
+    func createIndicator() {
         indicator.center = self.view.center
         indicator.hidesWhenStopped = true
         indicator.style = UIActivityIndicatorView.Style.gray
@@ -62,7 +62,6 @@ class TableViewController: UIViewController {
         
         refreshController.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
-    
 }
 
 //MARK: api response notification
@@ -95,7 +94,6 @@ extension TableViewController {
             self.refreshController.endRefreshing()
         }
     }
-    
 }
 
 //MARK: tableview delegate and datasource
@@ -125,5 +123,4 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
-    
 }

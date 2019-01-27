@@ -15,16 +15,6 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var nickLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
     
     override func prepareForReuse() {
         initStarImageViews()

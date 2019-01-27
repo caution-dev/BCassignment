@@ -37,7 +37,7 @@ extension UIViewController {
         showAlertController(style:. actionSheet)
     }
     
-    func showAlertController(style: UIAlertController.Style){
+    func showAlertController(style: UIAlertController.Style) {
         
         let alertController: UIAlertController
         alertController = UIAlertController(title: "정렬방식 선택", message: "영화를 어떤 순서로 정렬할까요?", preferredStyle: style)

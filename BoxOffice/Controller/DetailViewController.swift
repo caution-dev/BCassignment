@@ -20,13 +20,13 @@ class DetailViewController: UIViewController {
     private let dispatchGroup = DispatchGroup()
     private let indicator = UIActivityIndicatorView()
 
-    var detailId: String = ""{
+    var detailId: String = "" {
         willSet(value){
             loadDetailData(value: value)
         }
     }
     
-    var detailTitle: String = ""{
+    var detailTitle: String = "" {
         willSet(value){
             self.navigationItem.title = value
         }
@@ -44,7 +44,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func createIndicator(){
+    func createIndicator() {
         indicator.center = self.view.center
         indicator.hidesWhenStopped = true
         indicator.style = UIActivityIndicatorView.Style.gray
@@ -81,7 +81,6 @@ extension DetailViewController {
             }
         }
         dataTask.resume()
-        
     }
     
     func loadData(resource: String) {
@@ -104,5 +103,4 @@ extension DetailViewController {
         }
         dataTask.resume()
     }
-
 }

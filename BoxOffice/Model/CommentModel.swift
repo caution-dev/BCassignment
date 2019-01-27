@@ -19,5 +19,7 @@ struct Comment: Codable {
 }
 
 struct CommentResponse: Codable {
+    
     let comments: [Comment]
+    
 }
